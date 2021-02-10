@@ -1,8 +1,0 @@
-prefix=/home/alex/project1_ws/install
-
-Name: turtlebot3_description
-Description: Description of turtlebot3_description
-Version: 1.2.4
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: urdf xacro
