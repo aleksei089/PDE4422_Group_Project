@@ -11,6 +11,7 @@ mkdir -p ~/group_project_ws/src
 
 2. Clone Group Project repository:  
 cd ~/group_project_ws/src/
+
 git clone https://github.com/aleksei089/PDE4422_Group_Project.git
 
 3. Make:
