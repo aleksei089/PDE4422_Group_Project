@@ -20,8 +20,8 @@ git clone https://github.com/aleksei089/PDE4422_Group_Project.git
 cd ~/group_project_ws/
 catkin_make
 ```
-4. Set Waffle model. 
-** Open the bashrc file:
+4. Set Waffle model.  
+Open the bashrc file:
 ```
 gedit ~/.bashrc
 ```
@@ -29,8 +29,8 @@ Add line at the bottom of the file:
 ```
 export TURTLEBOT3_MODEL=waffle
 ```
-Save the file and close it. 
-* Reload .bashrc:
+Save the file and close it.  
+Reload .bashrc:
 ```
 source ~/.bashrc
 ```
