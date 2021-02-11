@@ -21,7 +21,7 @@ cd ~/group_project_ws/
 catkin_make
 ```
 4. Set Waffle model. 
-*Open the bashrc file:
+** Open the bashrc file:
 ```
 gedit ~/.bashrc
 ```
