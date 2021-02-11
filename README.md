@@ -29,7 +29,7 @@ Add line at the bottom of the file:
 export TURTLEBOT3_MODEL=waffle
 ```
 Save the file and close it. 
-> Reload .bashrc:
+  Reload .bashrc:
 ```
 source ~/.bashrc
 ```
