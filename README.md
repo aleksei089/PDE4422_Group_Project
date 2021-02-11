@@ -6,7 +6,9 @@ The developers are MSc Robotics students from Middlesex University London: Aleks
 The project presents a mobile robot based on TurtleBot3 with added Robot Arm, which can navigate in the created environment using the Navigation Stack, travel according to set points and move objects using the gripper. For this purpose, a robot is created based on the TurtleBot3 model, to which an arm capable of moving objects is added, an environment is created, sensors, Python program and The Navigation Stack are developed to navigate the robot.
 
 Commands to start work:
+
 1. Create workspace:
+
 mkdir -p ~/group_project_ws/src
 
 2. Clone Group Project repository:  
