@@ -41,7 +41,7 @@ Jump to the PDE4422_Group_Project folder:
 ```
 cd ~/group_project_ws/src/PDE4422_Group_Project/
 ```
-Uploading (in "release v?" "?" symbol indicates the version number):
+Uploading (in "release v?" symbol "?" indicates a release version number):
 ```
 git add .
 git commit -m "release v?"
