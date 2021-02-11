@@ -37,11 +37,11 @@ Launch RViz:
 ```
 roslaunch turtlebot3_fake turtlebot3_fake.launch
 ```
-Launch Gazebo:
+Launch Gazebo (in a new terminal):
 ```
 roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 ```
-To move TurtleBot3:
+To move TurtleBot3 (in a new terminal):
 ```
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
