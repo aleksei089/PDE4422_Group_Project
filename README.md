@@ -26,7 +26,7 @@ gedit ~/.bashrc
 ```
 Add line at the bottom of the file:
 ```
-export TURTLEBOT3_MODEL=waffle
+export TURTLEBOT3_MODEL=waffle_pi
 ```
 Save the file and close it. Reload .bashrc:
 ```
