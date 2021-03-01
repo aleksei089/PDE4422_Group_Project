@@ -24,7 +24,7 @@ catkin_make
 ```
 gedit ~/.bashrc
 ```
-Add line at the bottom of the file:
+Add lines at the bottom of the file:
 ```
 export TURTLEBOT3_MODEL=waffle_pi
 source devel/setup.bash
