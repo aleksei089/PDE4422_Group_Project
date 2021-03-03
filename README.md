@@ -41,7 +41,7 @@ Save the file and close it. Reload .bashrc:
 source ~/.bashrc
 ```
 ## Launch commands
-1. Launch Gazebo (Don't forget to start the simulation!!! |>):
+1. Launch Gazebo (don't forget to start the simulation!!! |>):
 ```
 roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo.launch
 ```
