@@ -55,7 +55,6 @@ Uploading (in "release v?" symbol "?" indicates a release version number):
 ```
 git add .
 git commit -m "release v?"
-git remote add origin https://github.com/aleksei089/PDE4422_Group_Project.git
 git push -u origin master
 ```
 Enter username and password.
