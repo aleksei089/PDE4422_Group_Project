@@ -10,17 +10,24 @@ The project presents a mobile robot based on TurtleBot3 with added Robot Arm, wh
 ```
 mkdir -p ~/group_project_ws/src
 ```
-2. Clone Group Project repository:
+2. Download packages:
+```
+sudo apt-get install ros-melodic-moveit-msgs
+sudo apt-get install ros-melodic-moveit-core
+sudo apt-get install ros-melodic-moveit-ros-planning
+sudo apt-get install ros-melodic-moveit-ros-planning-interface
+```
+3. Clone Group Project repository:
 ```
 cd ~/group_project_ws/src/
 git clone https://github.com/aleksei089/PDE4422_Group_Project.git
 ```
-3. Make:
+4. Make:
 ```
 cd ~/group_project_ws/
 catkin_make
 ```
-4. Set Waffle model. Open the bashrc file:
+5. Set Waffle model. Open the bashrc file:
 ```
 gedit ~/.bashrc
 ```
@@ -34,17 +41,29 @@ Save the file and close it. Reload .bashrc:
 source ~/.bashrc
 ```
 ## Launch commands
-Launch RViz:
+1. Launch Gazebo (Don't forget to start the simulation!!! |>):
 ```
-roslaunch turtlebot3_fake turtlebot3_fake.launch
+roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo.launch
 ```
-Launch Gazebo (in a new terminal):
+2. Launch Controller (in a new terminal):
 ```
-roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+roslaunch turtlebot3_manipulation_moveit_config move_group.launch
 ```
-To move TurtleBot3 (in a new terminal):
+3. Launch Manipulator Control from Window (in a new terminal):
+```
+roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
+```
+3. **OR** Launch Manipulator Control from MoveIt!/RViz (in a new terminal):
+```
+roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch
+```
+4. To Drive TurtleBot3 (in a new terminal):
 ```
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+5. Launch Python File for Automatic Grip (better when the TurtleBot3 is stopped) (in a new terminal):
+```
+rosrun turtlebot3_manipulation_moveit_config test1.py
 ```
 ## Uploading files to GitHub
 Jump to the PDE4422_Group_Project folder:
