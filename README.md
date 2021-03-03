@@ -57,7 +57,7 @@ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
 ```
 roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch
 ```
-4. To Drive TurtleBot3 (in a new terminal):
+4. To Drive a TurtleBot3 (in a new terminal):
 ```
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
