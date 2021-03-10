@@ -10,7 +10,7 @@ The project presents a mobile robot based on TurtleBot3 with added Robot Arm, wh
 ```
 mkdir -p ~/group_project_ws/src
 ```
-2. Download packages:
+2. Install packages:
 ```
 sudo apt-get install ros-melodic-moveit-msgs
 sudo apt-get install ros-melodic-moveit-core
