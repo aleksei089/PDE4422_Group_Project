@@ -20,7 +20,7 @@ sudo apt-get install ros-melodic-moveit-ros-planning-interface
 3. Clone Group Project repository:
 ```
 cd ~/group_project_ws/src/
-git clone https://github.com/aleksei089/PDE4422_Group_Project.git
+git clone https://github.com/aleksei089/PDE4422_Group_Project.git .
 ```
 4. Make:
 ```
