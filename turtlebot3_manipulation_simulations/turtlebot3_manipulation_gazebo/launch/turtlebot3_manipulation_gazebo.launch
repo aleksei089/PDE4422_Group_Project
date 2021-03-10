@@ -5,9 +5,10 @@
   <arg name="use_sim_time" default="true"/>
 
   <rosparam file="$(find turtlebot3_manipulation_gazebo)/config/gazebo_controller.yaml" command="load"/>
-
+  <env name="GAZEBO_MODEL_PATH" value="$(find turtlebot3_manipulation_gazebo)"/>
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_manipulation_gazebo)/worlds/empty.world"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="gui" value="$(arg gui)"/>
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
