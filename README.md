@@ -41,9 +41,17 @@ Save the file and close it. Reload .bashrc:
 source ~/.bashrc
 ```
 ## Launch commands
-1. Launch Gazebo (don't forget to start the simulation in it!!! |>):
+1. Launch Navigation World in Gazebo (don't forget to start the simulation in it!!! |>):
 ```
 roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo.launch
+```
+1. **OR** Launch Grab World in Gazebo (don't forget to start the simulation in it!!! |>):
+```
+roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo_grab.launch
+```
+1. **OR** Launch Final World in Gazebo (don't forget to start the simulation in it!!! |>):
+```
+roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation_gazebo_final.launch
 ```
 2. Launch Controller (in a new terminal):
 ```
@@ -61,14 +69,18 @@ roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch
 ```
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
-5. Launch Python File for Automatic Grip (better when the TurtleBot3 is stopped) (in a new terminal):
+5. Launch Python File for Automatic Grab (better when the TurtleBot3 is stopped) (in a new terminal):
 ```
-rosrun turtlebot3_manipulation_moveit_config test1.py
+rosrun turtlebot3_manipulation_moveit_config grab.py
+```
+6. Launch Python File for Automatic Put (better when the TurtleBot3 is stopped) (in a new terminal):
+```
+rosrun turtlebot3_manipulation_moveit_config put.py
 ```
 ## Uploading files to GitHub
 Jump to the PDE4422_Group_Project folder:
 ```
-cd ~/group_project_ws/src/PDE4422_Group_Project/
+cd ~/group_project_ws/src/
 ```
 Uploading (in "release v?" symbol "?" indicates a release version number):
 ```
