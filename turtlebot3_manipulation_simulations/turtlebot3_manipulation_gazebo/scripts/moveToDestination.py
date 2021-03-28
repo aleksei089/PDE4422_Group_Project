@@ -3,6 +3,8 @@ import rospy
 import math
 import sys
 import tf
+import numpy as np
+import matplotlib.pyplot as plt
 from geometry_msgs.msg import Twist, Point
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import LaserScan
@@ -12,7 +14,7 @@ from tf.transformations import euler_from_quaternion
 rospy.init_node("move_robot")
 pub = rospy.Publisher("cmd_vel", Twist, queue_size=5)
 velocity_msg = Twist()
-
+trajectory = list()
 # we publish the velocity at 4 Hz (4 times per second)
 rate = rospy.Rate(10)  
 
@@ -155,6 +157,8 @@ def get_a_l_r(goal):
     distance_to_goal = compute_distance(position.x, position.y, goal_x, goal_y)
     linear_velocity = min(k_h_gain * distance_to_goal, 0.14)+0.15
 
+    trajectory.append([position.x, position.y])
+
     # upper limit on max angular velocity
     if angular_velocity > 0:
         angular_velocity = min(angular_velocity, 1.5)+0.10
@@ -165,7 +169,7 @@ def get_a_l_r(goal):
 
 # path way points for turtlebot 
 #Box-1, Box-2, White Box, Left Black Box, Box 4, Home
-waypoints = [(3.60,5.60), (4.2, -3.80),(-3 -3.54), (0.65, 4.08), (2.34, 0.20), (0.02, 0.02)]
+waypoints = [(3.60,5.60), (4.2, -3.80),(-3, -3.54), (0.65, 4.08), (2.34, 0.20), (0.02, 0.02)]
 
 # initialize global variables
 goal_index = 0
@@ -187,8 +191,8 @@ def sensor_callback(msg):
     front = msg.ranges[0]
     left_15 = msg.ranges[40]
     right_15 = msg.ranges[320]
-    left_90 = msg.ranges[90]
-    right_90 = msg.ranges[270]
+    left_90 = msg.ranges[60]
+    right_90 = msg.ranges[300]
 
     #rospy.loginfo("Distance from obstacle (front): {f}".format(f=front))
     #rospy.loginfo("Distance from obstacle (left): {l}".format(l=left_15))
@@ -223,6 +227,13 @@ choice = choose()
 def shutdown():
     # stop turtlebot
     rospy.loginfo("Quit program")
+    # plot trajectory
+    data = np.array(trajectory)
+    np.savetxt('trajectory.csv', data, fmt='%f', delimiter=',')
+    #print(data)
+    plt.plot(data[:,0],data[:,1])
+    plt.show()
+    rospy.sleep(2)
     exit()
 
 while not rospy.is_shutdown():
@@ -234,7 +245,7 @@ while not rospy.is_shutdown():
     #thresh = 0.3
     forwardThresh = 0.7
     sideThresh = 0.6
-
+    prevAngularVelZ = 1
 
     if (goalReached):
         rospy.loginfo(goalReached)
@@ -262,27 +273,28 @@ while not rospy.is_shutdown():
         # if obstacle detected on front, turn right
         elif front > forwardThresh:
             if left_15 < sideThresh:
-                rospy.loginfo('Front Left')
+                rospy.loginfo('- Left')
                 velocity_msg.angular.z = -1.5
                 velocity_msg.linear.x = 0.0
             elif right_15 < sideThresh:
-                rospy.loginfo("Front Right")
+                rospy.loginfo("- Right")
+                velocity_msg.angular.z = 1.5
+                velocity_msg.linear.x = 0.0
+            elif left_90 < sideThresh:
+                rospy.loginfo('- left 60')
+                velocity_msg.angular.z = -1.5
+                velocity_msg.linear.x = 0.0
+            elif right_90 < sideThresh:
+                rospy.loginfo("- Right 60")
                 velocity_msg.angular.z = 1.5
                 velocity_msg.linear.x = 0.0
             else:
                 velocity_msg.angular.z = 0.0
                 velocity_msg.linear.x = 0.3
-            """elif left_90 < sideThresh:
-                rospy.loginfo('Front 90 Left')
-                velocity_msg.angular.z = -1.5
-                velocity_msg.linear.x = 0.0
-            elif right_90 < sideThresh:
-                rospy.loginfo("Front 90 Right")
-                velocity_msg.angular.z = 1.5
-                velocity_msg.linear.x = 0.0"""
 
         
         if front < forwardThresh:
+            rospy.loginfo("- Front")
             velocity_msg.angular.z = 1.5
             velocity_msg.linear.x = 0.0
         
