@@ -170,7 +170,7 @@ def get_a_l_r(goal):
 
 # path way points for turtlebot 
 #Box-1, Box-2, White Box, Left Card Box, Box 4, Home
-waypoints = [(3.60,5.60), (4.2, -4),(-3, -3.54), (-0.50, 4), (2.34, 0.20), (0.02, 0.02)]
+waypoints = [(3.60,5.60), (4.2, -4),(-3, -3.54), (-0.50, 4), (2.34, -0.14), (0.02, 0.02)]
 
 # initialize global variables
 goal_index = 0
@@ -228,16 +228,6 @@ choice = choose()
 def shutdown():
     # stop turtlebot
     rospy.loginfo("Quit program")
-    # plot trajectory
-    data = np.array(trajectory)
-
-    now = datetime.now()
-    current_time = now.strftime("%H%M%S")
-    np.savetxt('trajectory-'+current_time+'-.csv', data, fmt='%f', delimiter=',')
-    #print(data)
-
-    plt.plot(data[:,0],data[:,1])
-    plt.show()
     rospy.sleep(2)
     exit()
 
@@ -272,6 +262,16 @@ while not rospy.is_shutdown():
                 pub.publish(velocity_msg)
                 rate.sleep()
                 goalReached = False
+                # plot trajectory
+                data = np.array(trajectory)
+
+                now = datetime.now()
+                current_time = now.strftime("%H%M%S")
+                np.savetxt('trajectory-'+current_time+'-.csv', data, fmt='%f', delimiter=',')
+                #print(data)
+
+                plt.plot(data[:,0],data[:,1])
+                plt.show()
                 choice = choose()
 
         # if obstacle detected on front, turn right
