@@ -65,15 +65,22 @@ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
 ```
 roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch
 ```
-4. To Drive a TurtleBot3 (in a new terminal):
+4. To Start recording a video using Turtlebot3 camera (in a new terminal):
+```
+rosrun image_view image_view image:=/camera/rgb/image_raw
+mkdir ~/turtlebot_videos
+cd ~/turtlebot_videos
+rosrun image_view video_recorder image:=/camera/rgb/image_raw
+```
+5. To Drive a TurtleBot3 (in a new terminal):
 ```
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
-5. Launch Python File for Automatic Grab (better when the TurtleBot3 is stopped) (in a new terminal):
+6. Launch Python File for Automatic Grab (better when the TurtleBot3 is stopped) (in a new terminal):
 ```
 rosrun turtlebot3_manipulation_moveit_config grab.py
 ```
-6. Launch Python File for Automatic Put (better when the TurtleBot3 is stopped) (in a new terminal):
+7. Launch Python File for Automatic Put (better when the TurtleBot3 is stopped) (in a new terminal):
 ```
 rosrun turtlebot3_manipulation_moveit_config put.py
 ```
